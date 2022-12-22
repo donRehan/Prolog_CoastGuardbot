@@ -1,0 +1,3 @@
+1. Infinite loop issue => Fixed by having a visited array. Rests each time we reach a milestone ( A milestone is when I arrive to a ship to pickup or when I reach station to drop).
+2. I was not able to check wether an element is in a list or not , As there was a bug and I created this file to practice on lists ( Called Lists.pl ). Until I learnt about its patterns.
+3. In the end there was a stack size issue => Fixed by 
