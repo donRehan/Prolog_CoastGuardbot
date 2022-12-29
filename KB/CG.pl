@@ -1,5 +1,5 @@
 % Including our knowledge base
-:- include('KB3.pl').
+:- include('KB.pl').
 % Check in the end if the conditions are met before unifying
 goal(S):- 
     result(A1,s0), 
@@ -36,14 +36,7 @@ result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST),V,station(SI,SII),C,CR):-
         CR1 is CR + 1,
         result(A2,A1,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST1),[],station(SI,SII),C,CR1),
 	A = A2.
-	%A = S0.
-%result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc([[SX,SY]]),V):- 
-%        \+ member([X,Y], V),
-%        V1 = [],
-%        list_delete([X,Y], [X,YI], V2),
-%	A1 = result(pickup,S0),
-%	result(A2,A1,agent_loc(X,YI),grid(Y1,Y2),ships_loc([[SX,SY]]),V1),
-%	A = A2.
+
 %down
 result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST),V,station(SI,SII),C,CR):-
 	X1 is X + 1 ,
@@ -63,13 +56,8 @@ result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST),V,station(SI,SII),C,CR):-
 	A1 = result(up,S0),
 	result(A2,A1,agent_loc(X1,Y),grid(Y1,Y2),ships_loc(LST),V1,station(SI,SII),C,CR),
 	A = A2.
+
 %left
-%result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc([[SX,SY]])):- 
-%        Y > 0,
-%        Y1 is Y - 1 ,
-%        A1 = result(left,S0),
-%        result(A2,A1,agent_loc(X,Y1),grid(Y1,Y2),ships_loc([[SX,SY]])),
-%        A = A2.
 result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST),V,station(SI,SII),C,CR):- 
 	YI is Y - 1 , 
 	YI > 0,
@@ -78,12 +66,8 @@ result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST),V,station(SI,SII),C,CR):-
 	A1 = result(left,S0),
 	result(A2,A1,agent_loc(X,YI),grid(Y1,Y2),ships_loc(LST),V1,station(SI,SII),C,CR),
 	A = A2.
+
 %%right
-%result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc([[SX,SY]])):- 
-%        Y < Y2,Y1 is Y - 1 ,
-%        A1 = result(right,S0), 
-%        result(A2,A1,agent_loc(X,Y1),grid(Y1,Y2),ships_loc([[SX,SY]])),
-%        A = A2.
 result(A,S0,agent_loc(X,Y),grid(Y1,Y2),ships_loc(LST),V,station(SI,SII),C,CR):- 
 	YI is Y + 1 , 
 	YI < Y2,
